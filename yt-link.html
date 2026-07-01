@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta property="og:title" content="Watch on YouTube"/>
+  <meta property="og:type" content="website"/>
+  <title>Opening YouTube…</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{display:flex;flex-direction:column;align-items:center;justify-content:center;
+         min-height:100vh;background:#0f0f0f;color:#fff;
+         font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+         text-align:center;padding:32px 20px;}
+    .icon{font-size:3.5rem;margin-bottom:18px}
+    h1{font-size:1.4rem;font-weight:700;color:#ff0000}
+    p{color:#666;font-size:0.9rem;margin-top:12px;line-height:1.7}
+    a{color:#ff0000;font-weight:600;text-decoration:none}
+    .bar{width:220px;height:5px;background:#1e1e1e;border-radius:3px;margin-top:28px;overflow:hidden}
+    .fill{height:100%;background:#ff0000;border-radius:3px;animation:go 1.4s linear forwards}
+    @keyframes go{from{width:0}to{width:100%}}
+  </style>
+</head>
+<body>
+  <div class="icon">▶</div>
+  <h1>Opening YouTube…</h1>
+  <p>Launching the YouTube app on your phone.<br>
+     Not opening? <a href="https://www.youtube.com/watch?v=CI7XT7lY2-c">Tap here to watch</a></p>
+  <div class="bar"><div class="fill"></div></div>
+  <script>
+    (function(){
+      var ios     = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+      var android = /Android/i.test(navigator.userAgent);
+
+      if (ios) {
+        window.location.href = 'youtube://CI7XT7lY2-c';
+      } else if (android) {
+        window.location.href = 'vnd.youtube://CI7XT7lY2-c';
+      }
+      // fallback: if app didn't open in 1.5s, go to web
+      setTimeout(function(){
+        window.location.href = 'https://www.youtube.com/watch?v=CI7XT7lY2-c';
+      }, 1500);
+    })();
+  </script>
+</body>
+</html>
